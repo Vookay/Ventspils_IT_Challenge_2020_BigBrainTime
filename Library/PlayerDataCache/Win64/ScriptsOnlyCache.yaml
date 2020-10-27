@@ -5,6 +5,8 @@ ScriptsOnlyBuild:
     - SimulationManager
     Unity.2D.Tilemap.Editor.dll:
     - UnityEditor.Tilemaps.GridPaintingState
+    - UnityEditor.Tilemaps.GridPaletteBrushes
+    - UnityEditor.Tilemaps.GridPalettes
     - UnityEditor.Tilemaps.SceneViewGridManager
     - UnityEditor.Tilemaps.TileDragAndDropManager
     Unity.Rider.Editor.dll:
@@ -303,7 +305,7 @@ ScriptsOnlyBuild:
     className: Selectable
   - hash:
       serializedVersion: 2
-      Hash: 19f9d20df89d4b23f7a3410cb76c55e0
+      Hash: 3dbe80f5dce7645d9c0b9fd8ac92485b
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: SimulationAnimationManager
@@ -538,4 +540,4 @@ ScriptsOnlyBuild:
   platform: 19
   scenePathNames:
   - Assets/Scenes/SampleScene.unity
-  playerPath: D:/-=UserData=-/Desktop/ITChallenge2020.exe
+  playerPath: D:/Speles un programmas/Unity/Git/ITChallenge2020/Ventspils_IT_Challenge_2020_BigBrainTime/ITChallenge2020.exe

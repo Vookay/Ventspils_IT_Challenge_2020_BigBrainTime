@@ -19,7 +19,7 @@ public class SimulationAnimationManager : MonoBehaviour
     public float time;
     public float maxRunTime;
     private float timerTime;
-    private float runTimer;
+    public float runTimer;
     internal float yearTime;
     private float currentYear;
     public TMP_Text timerText;
@@ -70,10 +70,10 @@ public class SimulationAnimationManager : MonoBehaviour
             if (runTimer <= 0)
             {
                 running = false;
-                unrecycledWasteText.text = simulationManager.unrecycledWaste.ToString("##,#", CultureInfo.CurrentCulture) + " t";
-                recycledWasteText.text = simulationManager.recycledWaste.ToString("##,#", CultureInfo.CurrentCulture) + " t";
+                unrecycledWasteText.text = ((unrecycledWaste / waste) * simulationManager.waste).ToString("##,#", CultureInfo.CurrentCulture) + " t";
+                recycledWasteText.text = ((recycledWaste / waste)*simulationManager.waste).ToString("##,#", CultureInfo.CurrentCulture) + " t";
                 wasteText.text = simulationManager.waste.ToString("##,#", CultureInfo.CurrentCulture) + " t";
-                recyclableWasteText.text = simulationManager.recyclableWaste.ToString("##,#", CultureInfo.CurrentCulture) + " t";
+                recyclableWasteText.text = ((recyclableWaste / waste) * simulationManager.waste).ToString("##,#", CultureInfo.CurrentCulture) + " t";
                 blockingPanel.SetActive(true);
                 return;
             }       
