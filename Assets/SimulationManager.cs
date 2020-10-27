@@ -55,8 +55,6 @@ public class SimulationManager : MonoBehaviour
         recyclableWaste = Mathf.Round(years * ((0.407f * 0.31f) * (population * (1 - recyclingPercent))));
         unrecycledWaste = Mathf.Round(years * (0.407f * population) * (1-0.31f));
         waste = unrecycledWaste + recycledWaste + recyclableWaste;
-        simulationAnimationManager.yearTime = simulationAnimationManager.runTimer / years;
-        
 
     }
 

@@ -43,12 +43,14 @@ public class SimulationAnimationManager : MonoBehaviour
         running = false;
         timerTime = time;
         runTimer = maxRunTime;
-        currentYear = 1;
+        currentYear = 0;
+        yearTime = 0;
         x = 0f;
         y = 0f;
         baseScale = gameObject.GetComponent<RectTransform>().localScale;
         gameObject.GetComponent<RectTransform>().localScale = new Vector2(0, 0);
         unrecycledScale = gameObject.GetComponent<RectTransform>();
+        
 
     }
 
@@ -64,14 +66,14 @@ public class SimulationAnimationManager : MonoBehaviour
             if (yearTime <= 0)
             {
                 currentYear++;
-                yearTime = maxRunTime / simulationManager.years;
+                yearTime = maxRunTime/simulationManager.years;
             }
             runTimer -= Time.deltaTime;
             if (runTimer <= 0)
             {
                 running = false;
                 unrecycledWasteText.text = ((unrecycledWaste / waste) * simulationManager.waste).ToString("##,#", CultureInfo.CurrentCulture) + " t";
-                recycledWasteText.text = ((recycledWaste / waste)*simulationManager.waste).ToString("##,#", CultureInfo.CurrentCulture) + " t";
+                recycledWasteText.text = ((recycledWaste / waste) * simulationManager.waste).ToString("##,#", CultureInfo.CurrentCulture) + " t";
                 wasteText.text = simulationManager.waste.ToString("##,#", CultureInfo.CurrentCulture) + " t";
                 recyclableWasteText.text = ((recyclableWaste / waste) * simulationManager.waste).ToString("##,#", CultureInfo.CurrentCulture) + " t";
                 blockingPanel.SetActive(true);
@@ -80,7 +82,7 @@ public class SimulationAnimationManager : MonoBehaviour
             if (timerTime <= 0)
             {
                 timerTime = time;
-                unrecycledScale.localScale = new Vector2(x, y);
+                unrecycledScale.localScale = new Vector3(x, y, 1);
                 if (unrecycledScale.localScale.x < baseScale.x)
                     x += baseScale.x/(maxRunTime/time);
                 if (unrecycledScale.localScale.y < baseScale.y)
@@ -93,9 +95,9 @@ public class SimulationAnimationManager : MonoBehaviour
                 recycledWasteText.text = Mathf.Round(recycledWaste).ToString("##,#", CultureInfo.CurrentCulture) + " t";
                 recyclableWasteText.text = Mathf.Round(recyclableWaste).ToString("##,#", CultureInfo.CurrentCulture) + " t";
                 wasteText.text = Mathf.Round(waste).ToString("##,#", CultureInfo.CurrentCulture) + " t";
-                recycledScale.localScale = new Vector2(unrecycledScale.localScale.x, unrecycledScale.localScale.y);
+                recycledScale.localScale = new Vector3(unrecycledScale.localScale.x, unrecycledScale.localScale.y, 1);
                 recycledImage.fillAmount = recycledWaste / waste;
-                recyclableScale.localScale = new Vector2(unrecycledScale.localScale.x, unrecycledScale.localScale.y);
+                recyclableScale.localScale = new Vector3(unrecycledScale.localScale.x, unrecycledScale.localScale.y, 1);
                 recyclableImage.fillAmount = recycledWaste / waste + recyclableWaste / waste;
                 timerText.text = "Time left: " + Mathf.Round(runTimer);
             }
